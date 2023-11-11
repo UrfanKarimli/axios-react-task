@@ -8,6 +8,7 @@ import { BASE_URL } from '../utils/constants';
 
 
 const Persons = () => {
+  const [rows, setRows] = useState()
   const columns = [
     { field: 'id', headerName: 'ID', width: 190 },
     {
@@ -28,19 +29,43 @@ const Persons = () => {
         width: 110,
         editable: true,
     },
+    {
+      field: 'delete',
+      headerName: 'Delete',
+      sortable: false,
+      width: 100,
+      renderCell: (params) => (
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => handleDelete(params.row.id)}
+        >
+          Delete
+        </Button>
+      ),
+    },
   ];
   const [data, setData] = useState([])
 
   const getData = async () => {
     try {
         let response = await axios(`${BASE_URL}/get-data`);
-        console.log(response.data.data)
+        // console.log(response.data.data)
         setData(response.data.data)
     } catch {
     } 
 }
-
-
+const handleDelete = (id) => {
+  // Use the setRows function to update the state and remove the row with the specified id
+  setRows((prevRows) => {
+    prevRows.filter((row) => row.id == id)
+  
+  });
+  axios.delete(`${BASE_URL}/delete-data/${id}`, setData).then(resp => {
+    navigate("/persons")
+})
+  // You may also want to perform any additional delete logic or API calls here
+};
 
 useEffect(() => {
     getData()

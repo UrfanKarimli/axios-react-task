@@ -62,7 +62,7 @@ const UptadePerson = () => {
     const updateData = async (e) => {
         // e.preventDefault();
         // const setUserData = {name:userData.name,surname:userData.surname,  username:userData.username, password:userData.password}
-        console.log("userData "  , userData)
+        // console.log("userData "  , userData)
         axios.put(`${BASE_URL}/update-data/${id}`, userData).then(resp => {
             navigate("/persons")
         })

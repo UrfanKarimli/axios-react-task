@@ -11,7 +11,7 @@ const DataTable = ({ columns, rows, url }) => {
         <div>
             <Box sx={{
                 height: 600,
-                width: '80%',
+                width: '100%',
                 
             }}>
                 <DataGrid

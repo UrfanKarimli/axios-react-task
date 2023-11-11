@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BASE_URL } from '../utils/constants'
+import { BASE_URL_API } from '../utils/constants'
 import axios from 'axios';
 import "./home.css"
 import DataTable from '../components/DataTable';
@@ -35,7 +35,7 @@ const Home = () => {
 
     const FetchData = async () => {
         try {
-            let response = await axios(`${BASE_URL}/products`);
+            let response = await axios(`${BASE_URL_API}/products`);
             setData(response.data)
             setLoading(false);
         } catch(error) {
