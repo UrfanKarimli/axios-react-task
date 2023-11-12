@@ -50,13 +50,13 @@ const Persons = () => {
   const getData = async () => {
     try {
         let response = await axios(`${BASE_URL}/get-data`);
-        // console.log(response.data.data)
+
         setData(response.data.data)
     } catch {
     } 
 }
 const handleDelete = (id) => {
-  // Use the setRows function to update the state and remove the row with the specified id
+
   setRows((prevRows) => {
     prevRows.filter((row) => row.id == id)
   
@@ -64,7 +64,7 @@ const handleDelete = (id) => {
   axios.delete(`${BASE_URL}/delete-data/${id}`, setData).then(resp => {
     navigate("/persons")
 })
-  // You may also want to perform any additional delete logic or API calls here
+
 };
 
 useEffect(() => {
